@@ -1,0 +1,23 @@
+
+
+<form [formGroup]="angForm" novalidate (ngSubmit)="onLogin(angForm.value)">
+      <div class="login-page">
+            <div class="form">
+                 <input type="text"  formControlName="username" [value]="username" (input)="username = $event.target.value"/>
+                 <div *ngIf="angForm.controls['username'].invalid && (angForm.controls['username'].dirty || angForm.controls['username'].touched)" >
+                 <div *ngIf="angForm.controls['username'].errors.required" style="color:red;">
+                        username is required.
+                  </div>
+                  </div>
+                <input type="password"  [value]="password" formControlName="password" (input)="password = $event.target.value"/>
+                <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" >
+                  <div *ngIf="angForm.controls['password'].errors.required" style="color:red;">
+                         password is required.
+                   </div>
+                   </div>
+                <button>login</button>
+                <p class="message">Not registered? <a href="#">Create an account</a></p>
+                <p style="color:red;">{{errorMsg}}</p>
+            </div>
+      </div>
+</form>
